@@ -57,6 +57,7 @@ export default class MarkdownRSSGeneratorPlugin {
                     author: this.options.author
                 });
                 mds.forEach(md => {
+                    let image = md.metas.coverimage.includes("http") ? md.metas.coverimage : this.options.link + md.metas.coverimage;
                     feed.addItem({
                         title: md.title,
                         id: this.options.link + md.path.replace(".md", "").replace("posts", this.options.route),
@@ -64,10 +65,10 @@ export default class MarkdownRSSGeneratorPlugin {
                         description: md.excerpt,
                         content: md.excerpt,
                         date: new Date(md.metas.date),
-                        image: this.options.link + md.metas.coverimage
+                        image: image
                     })
                 })
-                compilation.assets[this.options.outputPath] = new RawSource(feed.atom1());
+                compilation.assets[this.options.outputPath] = new RawSource(feed.rss2());
                 callback();
             }
         );

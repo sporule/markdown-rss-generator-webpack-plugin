@@ -1,6 +1,6 @@
 {
   "name": "markdown-rss-generator-webpack-plugin",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Markdown RSS Generator Plugin - Generate RSS from markdown",
   "author": "Sporule.com",
   "keywords": [
