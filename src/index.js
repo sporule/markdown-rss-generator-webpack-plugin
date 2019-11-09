@@ -29,6 +29,25 @@ export default class MarkdownRSSGeneratorPlugin {
         );
     }
 
+    sortPost = (mds, isDesc = true) => {
+        mds = mds.sort((a, b) => {
+            let dateA = new Date(a.metas.date);
+            let dateB = new Date(b.metas.date);
+            return isDesc ? dateB - dateA : dateA - dateB;
+        })
+        return mds;
+    }
+
+    removeFuturePosts = (mds) => {
+        //remove future and posts with no date
+        mds = mds.filter(post => {
+            if (post.metas.date && post.metas.date != "null") {
+                return new Date(post.metas.date) <= new Date();
+            }
+            return false;
+        })
+        return mds;
+    }
 
     apply(compiler) {
         // Specify the event hook to attach to
@@ -57,6 +76,8 @@ export default class MarkdownRSSGeneratorPlugin {
                     generator: this.options.generator,
                     author: this.options.author
                 });
+                mds = this.removeFuturePosts(mds);
+                mds = this.sortPost(mds, true);
                 mds.forEach(md => {
                     let image = md.metas.coverimage.includes("http") ? md.metas.coverimage : this.options.link + md.metas.coverimage;
                     feed.addItem({
