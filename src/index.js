@@ -22,7 +22,8 @@ export default class MarkdownRSSGeneratorPlugin {
                     email: "example@example.com",
                     link: "https://www.sporule.com"
                 },
-                route: "/items"
+                route: "/items",
+                useAtom:true
             },
             options
         );
@@ -68,7 +69,8 @@ export default class MarkdownRSSGeneratorPlugin {
                         image: image
                     })
                 })
-                compilation.assets[this.options.outputPath] = new RawSource(feed.rss2());
+                let feedContent = useAtom?feed.atom1():feed.rss2();
+                compilation.assets[this.options.outputPath] = new RawSource(feedContent);
                 callback();
             }
         );
