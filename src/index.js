@@ -3,7 +3,7 @@ import { Feed } from "feed";
 import MarkdownHandler from 'markdown-handler';
 
 
-export default class RSSGeneratorPlugin {
+export default class MarkdownRSSGeneratorPlugin {
     constructor(options = {}) {
         this.options = Object.assign(
             {

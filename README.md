@@ -15,7 +15,7 @@ npm install markdown-rss-generator-webpack-plugin
 In your Webpack Config file
 
 ```javascript
-const RSSGeneratorPlugin = require("RSSGeneratorPlugin").default;
+const MarkdownRSSGeneratorPlugin = require("markdown-rss-generator-webpack-plugin").default;
 
 //define the options
 const option = {
@@ -41,7 +41,7 @@ const option = {
 //In the plugin section
 
  plugins: [
-  new RSSGeneratorPlugin(option)
+  new MarkdownRSSGeneratorPlugin(option)
  ]
 
 ```
