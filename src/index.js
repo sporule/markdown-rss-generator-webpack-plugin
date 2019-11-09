@@ -59,7 +59,7 @@ export default class MarkdownRSSGeneratorPlugin {
                 mds.forEach(md => {
                     let image = md.metas.coverimage.includes("http") ? md.metas.coverimage : this.options.link + md.metas.coverimage;
                     feed.addItem({
-                        title: md.title,
+                        title: md.title.toUpperCase(),
                         id: this.options.link + md.path.replace(".md", "").replace("posts", this.options.route),
                         link: this.options.link + md.path.replace(".md", "").replace("posts", this.options.route),
                         description: md.excerpt,
