@@ -36,7 +36,7 @@ const option = {
                 },
                 route: "/items",
                 //this is the route for the markdown link. If the path of the markdown files are /posts/sporule.md, and the page link for rendered markdown is /items/sporule, then the route is /items
-                isAtom:true //it will return atom xml if it is true, otherwise it will return rss version 2 xml.
+                useAtom:true //it will return atom xml if it is true, otherwise it will return rss version 2 xml.
     }
 
 //In the plugin section

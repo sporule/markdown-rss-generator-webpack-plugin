@@ -23,7 +23,7 @@ export default class MarkdownRSSGeneratorPlugin {
                     link: "https://www.sporule.com"
                 },
                 route: "/items",
-                useAtom:true
+                useAtom: true
             },
             options
         );
@@ -69,7 +69,7 @@ export default class MarkdownRSSGeneratorPlugin {
                         image: image
                     })
                 })
-                let feedContent = useAtom?feed.atom1():feed.rss2();
+                let feedContent = this.options.useAtom ? feed.atom1() : feed.rss2();
                 compilation.assets[this.options.outputPath] = new RawSource(feedContent);
                 callback();
             }
