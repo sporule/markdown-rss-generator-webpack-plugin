@@ -1,0 +1,45 @@
+{
+  "name": "markdown-rss-generator-webpack-plugin",
+  "version": "0.0.1",
+  "description": "Markdown RSS Generator Plugin - Generate RSS from markdown",
+  "author": "Sporule.com",
+  "keywords": [
+    "rss generator",
+    "markdown"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sporule/markdown-rss-generator-webpack-plugin"
+  },
+  "scripts": {
+    "build": "npx webpack --config webpack.config.js"
+  },
+  "files": [
+    "/dist"
+  ],
+  "main": "./dist/index.js",
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.4.2",
+    "babel-loader": "^8.0.5",
+    "coveralls": "^3.0.6",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^24.8.0",
+    "jest-fetch-mock": "^2.1.2",
+    "script-ext-html-webpack-plugin": "^2.1.3",
+    "webpack": "^4.28.4",
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-server": "^3.1.14"
+  },
+  "dependencies": {
+    "feed": "^4.0.0",
+    "markdown-handler": "^0.3.3"
+  }
+}
