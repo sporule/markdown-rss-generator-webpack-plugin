@@ -1,7 +1,7 @@
 import { RawSource } from "webpack-sources";
 import { Feed } from "feed";
 import MarkdownHandler from 'markdown-handler';
-
+import MarkdownIt from 'markdown-it';
 
 export default class MarkdownRSSGeneratorPlugin {
     constructor(options = {}) {
@@ -50,7 +50,8 @@ export default class MarkdownRSSGeneratorPlugin {
     }
 
     MDtoHTML = (md) => {
-        return new MarkdownIt().render(md.content);
+        let image = md.metas.coverimage.includes("http") ? md.metas.coverimage : this.options.link + md.metas.coverimage
+        return new MarkdownIt().render("![coverimage](" + image + ")\n\n" + md.content);
     }
 
     apply(compiler) {
