@@ -49,6 +49,10 @@ export default class MarkdownRSSGeneratorPlugin {
         return mds;
     }
 
+    MDtoHTML = (md) => {
+        return new MarkdownIt().render(md.content);
+    }
+
     apply(compiler) {
         // Specify the event hook to attach to
         compiler.hooks.emit.tapAsync(
@@ -82,10 +86,10 @@ export default class MarkdownRSSGeneratorPlugin {
                     let image = md.metas.coverimage.includes("http") ? md.metas.coverimage : this.options.link + md.metas.coverimage;
                     feed.addItem({
                         title: md.title.toUpperCase(),
-                        id: this.options.link + md.path.replace(".md", "").replace("posts", this.options.route),
-                        link: this.options.link + md.path.replace(".md", "").replace("posts", this.options.route),
+                        id: this.options.link + md.path.split(".")[0].replace("posts", this.options.route),
+                        link: this.options.link + md.path.split(".")[0].replace("posts", this.options.route),
                         description: md.excerpt,
-                        content: md.excerpt,
+                        content: this.MDtoHTML(md),
                         date: new Date(md.metas.date),
                         image: image
                     })
